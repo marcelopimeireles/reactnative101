@@ -7,12 +7,18 @@ import Main from './pages/Main';
 import User from './pages/User';
 
 const Stack = createStackNavigator();
+const screenOptions = {
+  headerTitleAlign: 'center',
+  headerBackTitleVisible: false,
+  headerStyle: { backgroundColor: '#7159c1' },
+  headerTintColor: '#fff',
+};
 
 const Routes = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Main" component={Main} />
+      <Stack.Navigator screenOptions={screenOptions}>
+        <Stack.Screen name="Olá mundo" component={Main} />
         <Stack.Screen name="User" component={User} />
       </Stack.Navigator>
     </NavigationContainer>
