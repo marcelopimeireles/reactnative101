@@ -1,10 +1,11 @@
 import React from 'react';
-import { View } from 'react-native';
+
+import { Container } from './styles';
 
 import '../../config/ReactotronConfig';
 
 const Main = () => {
-  return <View />;
+  return <Container />;
 };
 
 export default Main;
