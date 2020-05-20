@@ -9,3 +9,6 @@
 
 ![Main view](/../master/screenshot/users.png "Main view" { width: 100px; })
 ![User view](/../master/screenshot/user.png "User view" { width: 100px; })
+
+<img src="/../master/screenshot/user.png" width="200">
+<img src=/screenshot/user.png" width="200">
