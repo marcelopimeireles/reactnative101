@@ -18,7 +18,7 @@ const Routes = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={screenOptions}>
-        <Stack.Screen name="Olá mundo" component={Main} />
+        <Stack.Screen name="Usuários" component={Main} />
         <Stack.Screen name="User" component={User} />
       </Stack.Navigator>
     </NavigationContainer>
