@@ -7,5 +7,4 @@
 - integration with Github API
 - Stack Navigation
 
-<img src="/../master/screenshot/users.png" width="200">
-<img src="/../master/screenshot/user.png" width="200">
+<img src="/../master/screenshot/users.png" width="200"> <img src="/../master/screenshot/user.png" width="200">
