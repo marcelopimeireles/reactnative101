@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Keyboard, ActivityIndicator } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import api from '../../services/api';
@@ -24,6 +25,16 @@ const Main = () => {
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);
   const [newUser, setNewUser] = useState('');
+  const localUsersName = 'users';
+
+  const updateLocalUsers = async () => {
+    const localUsers = await AsyncStorage.getItem(localUsersName);
+    if (localUsers) setUsers(JSON.parse(localUsers));
+  };
+
+  useEffect(() => {
+    updateLocalUsers();
+  }, [setUsers]);
 
   const handleAddUser = async () => {
     setLoading(true);
@@ -36,7 +47,9 @@ const Main = () => {
       avatar: response.data.avatar_url,
     };
 
-    setUsers([...users, data]);
+    const newUsers = [...users, data];
+    AsyncStorage.setItem('users', JSON.stringify(newUsers));
+    setUsers(newUsers);
     setNewUser('');
     setLoading(false);
 
