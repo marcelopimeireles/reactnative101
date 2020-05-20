@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Keyboard } from 'react-native';
+import { Keyboard, ActivityIndicator } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import api from '../../services/api';
@@ -21,10 +21,12 @@ import {
 import '../../config/ReactotronConfig';
 
 const Main = () => {
+  const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);
   const [newUser, setNewUser] = useState('');
 
   const handleAddUser = async () => {
+    setLoading(true);
     const response = await api.get(`/users/${newUser}`);
 
     const data = {
@@ -36,6 +38,7 @@ const Main = () => {
 
     setUsers([...users, data]);
     setNewUser('');
+    setLoading(false);
 
     Keyboard.dismiss();
   };
@@ -52,8 +55,12 @@ const Main = () => {
           returKeyType="send"
           onSubmitEditing={handleAddUser}
         />
-        <SubmitButton onPress={handleAddUser}>
-          <Icon name="add" size={20} color="#FFF" />
+        <SubmitButton loading={loading} onPress={handleAddUser}>
+          {loading ? (
+            <ActivityIndicator color="#fff" />
+          ) : (
+            <Icon name="add" size={20} color="#FFF" />
+          )}
         </SubmitButton>
       </Form>
 
