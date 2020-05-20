@@ -37,6 +37,8 @@ const Main = ({ navigation }) => {
     updateLocalUsers();
   }, [setUsers]);
 
+  navigation.setOptions({ title: 'Usuários' });
+
   const handleAddUser = async () => {
     setLoading(true);
     const response = await api.get(`/users/${newUser}`);
@@ -58,7 +60,6 @@ const Main = ({ navigation }) => {
   };
 
   const handleNavigate = (user) => {
-    console.tron.log(user);
     navigation.navigate('User', { user });
   };
 
@@ -101,7 +102,7 @@ const Main = ({ navigation }) => {
   );
 };
 
-Main.protoTypes = {
+Main.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func,
   }).isRequired,
