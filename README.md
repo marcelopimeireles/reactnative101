@@ -7,5 +7,5 @@
 - integration with Github API
 - Stack Navigation
 
-![Main view](/../master/screenshot/users.png?raw=true "Main view")
-![User view](/../master/screenshot/user.png?raw=true "User view")
+![Main view](/screenshot/users.png | width=100)
+![User view](/../master/screenshot/user.png | width=100)
