@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Keyboard, ActivityIndicator } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -21,7 +22,7 @@ import {
 
 import '../../config/ReactotronConfig';
 
-const Main = () => {
+const Main = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);
   const [newUser, setNewUser] = useState('');
@@ -56,6 +57,11 @@ const Main = () => {
     Keyboard.dismiss();
   };
 
+  const handleNavigate = (user) => {
+    console.tron.log(user);
+    navigation.navigate('User', { user });
+  };
+
   return (
     <Container>
       <Form>
@@ -85,7 +91,7 @@ const Main = () => {
             <Avatar source={{ uri: item.avatar }} />
             <Name>{item.name}</Name>
             <Bio>{item.bio}</Bio>
-            <ProfileButton onPress={() => {}}>
+            <ProfileButton onPress={() => handleNavigate(item)}>
               <ProfileButtonText>Ver perfil</ProfileButtonText>
             </ProfileButton>
           </User>
@@ -93,6 +99,12 @@ const Main = () => {
       />
     </Container>
   );
+};
+
+Main.protoTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
 };
 
 export default Main;
